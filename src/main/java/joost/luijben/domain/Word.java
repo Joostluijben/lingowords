@@ -3,25 +3,25 @@ package joost.luijben.domain;
 import java.util.regex.Pattern;
 
 public class Word {
-    private String word;
+    private String value;
 
-    public Word(String word) {
-        if (!Pattern.matches("\\p{Punct}", word) && Character.isLowerCase(word.charAt(0))) {
-            this.word = word;
+    public Word(String value) {
+        int wordLength = value.length();
+        if ((wordLength == 5 || wordLength == 6 || wordLength == 7) &&
+                Character.isLowerCase(value.charAt(0)) &&
+                !Pattern.matches("\\p{Punct}", value)) {
+            this.value = value;
         }
     }
 
-//    public Optional<String> getWord() {
-//        if (!Pattern.matches("\\p{Punct}", word) && Character.isLowerCase(word.charAt(0))) {
-//            return Optional.of(word);
-//        }
-//        return Optional.empty();
-//    }
+    public String getValue() {
+        return value;
+    }
 
     @Override
     public String toString() {
         return "Word{" +
-                "word='" + word + '\'' +
+                "word='" + value + '\'' +
                 '}';
     }
 }

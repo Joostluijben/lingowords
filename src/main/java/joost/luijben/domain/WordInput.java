@@ -6,5 +6,5 @@ import java.util.Set;
 
 @Component
 public interface WordInput {
-    public Set<Word> load();
+    Set<Word> load(Integer wordLength);
 }

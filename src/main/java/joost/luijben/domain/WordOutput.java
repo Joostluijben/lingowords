@@ -6,5 +6,7 @@ import java.util.Set;
 
 @Component
 public interface WordOutput {
-    public void save(Set<Word> words);
+    void save(WordSet words);
+    Set<Word> getWords(Integer wordLength);
+    Word getRandomWord(Integer wordLength);
 }

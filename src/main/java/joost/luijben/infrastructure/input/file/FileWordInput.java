@@ -4,12 +4,7 @@ import joost.luijben.domain.Word;
 import joost.luijben.domain.WordInput;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 public class FileWordInput implements WordInput {
@@ -20,7 +15,7 @@ public class FileWordInput implements WordInput {
     }
 
     @Override
-    public Set<Word> load() {
+    public Set<Word> load(Integer wordLength) {
         return wordDeserializer.getWords();
     }
 }

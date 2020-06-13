@@ -2,13 +2,12 @@ package joost.luijben.infrastructure.controllers;
 
 import joost.luijben.application.WordProcessor;
 import joost.luijben.domain.Word;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;
 
-@RestController("/words")
+@RestController
+@RequestMapping("/words")
 public class WordController {
     private final WordProcessor wordProcessor;
 
@@ -17,12 +16,12 @@ public class WordController {
     }
 
     @GetMapping
-    public Set<Word> getWords() {
-        return wordProcessor.getWords();
+    public Set<Word> getWords(@RequestParam(required = false) Integer wordLength) {
+        return wordProcessor.loadWordsFromOutput(wordLength);
     }
 
-    @PostMapping
-    public void saveWords(Set<Word> words) {
-        wordProcessor.saveWords(words);
+    @GetMapping("randomWord")
+    public Word getRandomWord(@RequestParam(required = false) Integer wordLength) {
+        return wordProcessor.getRandomWordFromOutput(wordLength);
     }
 }
