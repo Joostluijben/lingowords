@@ -19,7 +19,7 @@ public class TxtWord implements WordDeserializer{
         try {
             InputStream inputStream = new ClassPathResource("basiswoorden-gekeurd.txt").getInputStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-            return bufferedReader.lines().map(Word::new).collect(Collectors.toSet());
+            return bufferedReader.lines().filter(Word::isWordValid).map(Word::new).collect(Collectors.toSet());
         } catch (IOException e) {
             e.printStackTrace();
             return null;
