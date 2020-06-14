@@ -31,9 +31,7 @@ public class Word {
     }
 
     public static boolean isNullOrEmpty(String str) {
-        if (str != null && !str.isEmpty())
-            return false;
-        return true;
+        return str == null || str.isEmpty();
     }
 
     public String getValue() {
