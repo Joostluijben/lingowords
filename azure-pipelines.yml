@@ -55,3 +55,7 @@ steps:
       checkStyleRunAnalysis: true
       pmdRunAnalysis: true
   - script: bash <(curl -s https://codecov.io/bash) -t $(CODECOV_TOKEN)
+  - task: Bash@3
+    condition: and(succeeded(), eq(variables['Build.SourceBranchName'], 'master'))
+    inputs:
+      script: mvn deploy
