@@ -21,8 +21,7 @@ public class TxtWord implements WordDeserializer{
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
             return bufferedReader.lines().filter(Word::isWordValid).map(Word::new).collect(Collectors.toSet());
         } catch (IOException e) {
-            e.printStackTrace();
-            return null;
+            return Set.of();
         }
     }
 }
