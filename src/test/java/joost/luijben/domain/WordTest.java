@@ -12,10 +12,10 @@ import java.util.stream.Stream;
 import static junit.framework.TestCase.assertFalse;
 
 @ExtendWith(SpringExtension.class)
-public class WordTest {
+class WordTest {
     @ParameterizedTest
     @MethodSource("provideValidWords")
-    public void isWordValid() {
+    void isWordValid() {
         String inputWord = "preek";
         boolean result = Word.isWordValid(inputWord);
         Assert.assertTrue(result);
