@@ -7,5 +7,5 @@ import java.util.Set;
 
 @Service
 public interface WordDeserializer {
-    public Set<Word> getWords();
+    Set<Word> getWords();
 }

@@ -13,9 +13,9 @@ public class WordSet {
 
     public Set<Word> getWords(Integer wordLength) {
         if (wordLength != null) {
-            return words.stream().filter(word -> word.getValue().length() == wordLength).collect(Collectors.toSet());
+            return words.stream().filter(word -> Word.isWordValid(word.getValue())).filter(word -> word.getValue().length() == wordLength).collect(Collectors.toSet());
         }
-        return words;
+        return words.stream().filter(word -> Word.isWordValid(word.getValue())).collect(Collectors.toSet());
     }
 
     public Word getRandomWord(Integer wordLength) {
@@ -25,4 +25,10 @@ public class WordSet {
         return words.stream().skip(new Random().nextInt(words.size())).findFirst().orElse(null);
     }
 
+    @Override
+    public String toString() {
+        return "WordSet{" +
+                "words=" + words +
+                '}';
+    }
 }
